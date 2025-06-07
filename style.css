@@ -1,0 +1,334 @@
+/* === CONFIGURAÇÃO GLOBAL DO SITE === */
+body {
+  font-family: 'Libre Baskerville', serif; /* Fonte padrão usada no site */
+  margin: 0;                      /* Remove a margem externa da página */
+  padding: 0;                     /* Remove o espaçamento interno da página */
+}
+
+a {
+  font-family: inherit;
+}
+
+/* === CABEÇALHO FIXO (MENU SUPERIOR) === */
+header {
+  background: rgba(0, 0, 0, 0.7); /* Cor de fundo semi-transparente (preto com 70%) */
+  padding: 1rem;                  /* Espaçamento interno */
+  position: fixed;                /* Fixa o cabeçalho no topo da tela */
+  top: 0;
+  left: 0;
+  width: 100%;                   /* Ocupa toda a largura da página */
+  z-index: 1000;                 /* Garante que fique acima de outros elementos */
+}
+
+/* === NAVEGAÇÃO (MENU) === */
+nav {
+  padding: 0 5rem; /* Espaço nas laterais (esquerda e direita) */
+}
+
+nav ul {
+  display: flex;                /* Itens do menu em linha */
+  list-style: none;            /* Remove marcadores de lista */
+  justify-content: flex-end;   /* Alinha os itens do menu à direita */
+  gap: 4rem;                   /* Espaçamento entre os itens */
+  margin: 0;                   /* Corrigido valor inválido */
+  padding: 0;
+}
+
+nav a {
+  color: rgb(228, 219, 103);   /* Cor dos links do menu */
+  text-decoration: none;       /* Remove sublinhado */
+  font-weight: bold;           /* Deixa o texto em negrito */
+}
+
+/* === SEÇÕES PADRÃO === */
+section {
+  padding: 2rem;               /* Espaçamento interno */
+  border-bottom: 1px solid #ccc; /* Linha separando as seções */
+}
+
+/* === RODAPÉ === */
+footer {
+  background: #333;            /* Fundo escuro */
+  color: white;                /* Texto branco */
+  text-align: center;          /* Centraliza o texto */
+  padding: 1rem;               /* Espaço interno */
+}
+
+/* === GALERIA DE PROJETOS === */
+.galeria {
+  display: flex;              /* Layout em linha com quebra */
+  flex-wrap: wrap;           /* Permite que os projetos quebrem linha */
+  gap: 1rem;                 /* Espaçamento entre os projetos */
+}
+
+.projeto {
+  border: 1px solid #ccc;     /* Borda cinza clara */
+  padding: 1rem;              /* Espaço interno */
+  flex: 1 1 200px;            /* Responsivo: ocupa espaço mínimo de 200px */
+}
+
+/* === SEÇÃO INICIAL (HOME) COM IMAGEM DE FUNDO === */
+.home-bg {
+  position: relative;         /* Necessário para posicionamento do ::before e .overlay */
+  display: flex;
+  justify-content: flex-start;   /* Alinha o conteúdo à esquerda */
+  align-items: flex-start;       /* Alinha ao topo */
+  text-align: left;              /* Alinha texto à esquerda */
+  padding: 140px 60px 40px 40px; /* Espaçamento interno (topo, direita, baixo, esquerda) */
+  min-height: 85vh; /* Garante que a seção tenha altura mínima de uma tela inteira */
+  overflow: hidden;
+}
+
+/* Alinha os textos da home à esquerda */
+.home-content {
+  position: relative;
+  z-index: 3;                /* Fica acima da imagem e do overlay */
+  padding: 160px 20px 100px; /* Espaçamento extra para afastar do topo */
+  max-width: 800px;          /* Largura máxima do conteúdo */
+  text-align: left;
+}
+
+/* === IMAGEM DE FUNDO DA SEÇÃO INICIAL === */
+.home-bg::before {
+  content: "";                    /* Elemento vazio usado para a imagem */
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("fundo/imagem_site2.jpg"); /* Caminho da imagem */
+  background-size: cover;         /* A imagem cobre toda a área */
+  background-position: center;   /* Centraliza a imagem */
+  transition: transform 0.5s ease; /* Efeito de zoom suave ao passar o mouse */
+  z-index: 1;                     /* Fica atrás do conteúdo e da overlay */
+  overflow: hidden; /* evita que o zoom ultrapasse os limites */
+}
+
+/* Efeito de zoom na imagem ao passar o mouse */
+.home-bg:hover::before {
+  transform: scale(1.05);
+}
+
+/* === CAMADA ESCURA SOBRE A IMAGEM DE FUNDO === */
+.overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85); /* Fundo preto com opacidade */
+  z-index: 2;                            /* Fica acima da imagem e abaixo do conteúdo */
+}
+
+/* === ESTILOS DOS TEXTOS DA HOME (TÍTULO, NOME, DESCRIÇÃO) === */
+
+/* PORTIFÓLIO */
+.home-content p.titulo {
+  color: rgb(192, 192, 192);                        /* Cor cinza claro */
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: -3rem;
+  text-transform: uppercase;           /* Letras maiúsculas */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Sombra para melhor leitura */
+}
+
+/* WINDER ROSA */
+.home-content p.nome {
+  color: white;
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  font-weight: 800;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+/* Parágrafo com descrição */
+.home-content p {
+  color: white;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+}
+
+/* === SEÇÃO SOBRE === */
+.sobre-section {
+  padding: 80px 20px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.sobre-section .section-subtitle {
+  color: rgb(228, 219, 103);
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.sobre-section .section-title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-family: 'Libre Baskerville', serif;
+}
+
+.sobre-section .section-description {
+  font-size: 16px;
+  margin-bottom: 40px;
+  color: #444;
+  font-family: 'Libre Baskerville', serif;
+}
+
+/* ====================== */
+/* Novo layout flex para conteúdo sobre */
+.sobre-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.sobre-texto,
+.sobre-habilidades {
+  flex: 1 1 300px;
+  min-width: 300px;
+}
+
+.sobre-texto h3,
+.sobre-habilidades h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-family: 'Libre Baskerville', serif;
+}
+
+.sobre-texto p {
+  margin-bottom: 16px;
+  line-height: 1.6;
+  color: #222;
+  font-family: 'Libre Baskerville', serif;
+}
+
+/* === BARRAS DE PROGRESSO === */
+.skill {
+  margin-bottom: 25px;
+}
+
+.skill span {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 6px;
+  font-size: 13px;
+  text-transform: uppercase;
+  font-family: 'Libre Baskerville', serif;
+}
+
+.progress-bar {
+  background-color: #ddd;
+  height: 6px;              /* Barra mais fina */
+  border-radius: 12px;
+  position: relative;
+  overflow: visible;        /* Para mostrar a tarja fora da barra */
+}
+
+.progress-bar > div {
+  background: linear-gradient(90deg, #000, #1a472a);
+  height: 100%;
+  border-radius: 12px 0 0 12px;
+  position: relative;
+  width: 0;                 /* Inicia a barra com 0% */
+  transition: width 0.5s ease-in-out;
+}
+
+/* Tarja preta com percentual sobre a barra */
+.progress-bar > div span {
+  position: absolute;
+  top: -28px;               /* Posicionado acima da barra */
+  right: 0;
+  background-color: #000;   /* Tarja preta */
+  color: #fff;              /* Texto branco */
+  font-weight: 700;
+  font-size: 12px;
+  padding: 3px 6px;
+  border-radius: 3px;
+  white-space: nowrap;
+  transform: translateX(50%);
+  pointer-events: none;
+  user-select: none;
+  font-family: 'Libre Baskerville', serif;
+}
+
+/* === AJUSTES RESPONSIVOS === */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .home-content {
+    padding: 120px 20px 80px;
+  }
+
+  .home-content p.titulo {
+    font-size: 1.8rem;
+    margin-bottom: -2rem;
+  }
+
+  .home-content p.nome {
+    font-size: 2.2rem;
+  }
+
+  .home-content p {
+    font-size: 1.2rem;
+  }
+
+  .sobre-content {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .progress-bar > div span {
+    font-size: 11px;
+    top: -22px;
+  }
+}
+
+@media (max-width: 480px) {
+  nav {
+    padding: 0 1rem;
+  }
+
+  .home-content {
+    padding: 100px 15px 60px;
+  }
+
+  .home-content p.titulo {
+    font-size: 1.6rem;
+  }
+
+  .home-content p.nome {
+    font-size: 2rem;
+  }
+
+  .home-content p {
+    font-size: 1rem;
+  }
+
+  .progress-bar > div span {
+    font-size: 10px;
+    top: -20px;
+  }
+}
+
+/* Ajuste principal: imagem de fundo ocupa toda a altura da tela */
+.home-bg {
+  min-height: 85vh; /* Agora ocupa exatamente a altura da tela */
+}
+
+section {
+  min-height: 85vh; /* 100% da altura da tela */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
